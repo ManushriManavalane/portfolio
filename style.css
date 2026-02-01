@@ -1,0 +1,373 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: #020617;
+    color: #e5e7eb;
+    overflow-x: hidden;
+}
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 80px;
+    position: absolute;
+    width: 100%;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #020617; 
+}
+
+.nav-links a {
+    color: #e5e7eb;
+    text-decoration: none;
+    margin-left: 30px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* --- HERO SPLIT --- */
+.hero-split {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.left-side {
+    flex: 1;
+    background: #ffffff;
+    position: relative;
+    z-index: 5;
+}
+
+.right-side {
+    flex: 1;
+    background: #020617;
+    display: flex;
+    align-items: center;
+    padding-left: 250px; /* Space for the overlapping circle */
+    position: relative;
+    z-index: 1;
+}
+
+/* --- PROFILE CIRCLE (The Native Look) --- */
+.profile-circle {
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    border: 20px solid #020617; 
+    overflow: hidden;
+    position: absolute;
+    right: -250px; /* Anchors it exactly on the split line */
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 0 50px rgba(0,0,0,0.15);
+    background: #fff;
+}
+
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- CONTENT --- */
+.hero-content {
+    position: relative;
+    z-index: 10; /* Ensures text is above bubbles */
+}
+
+.hero-content h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+
+.hero-content h1 span {
+    color: #38bdf8;
+}
+
+.typing-text {
+    font-size: 1.8rem;
+    color: #94a3b8;
+    border-right: 3px solid #38bdf8;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 4s steps(30) infinite alternate, blink 0.7s infinite;
+}
+
+/* --- BUBBLES (Fixed Visibility) --- */
+.bubbles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* Sits between background and text */
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -100px;
+    background: rgba(56, 189, 248, 0.2); /* Higher opacity to be seen */
+    border-radius: 50%;
+    animation: floatUp 10s infinite ease-in;
+}
+
+.bubble:nth-child(1) { left: 10%; width: 80px; height: 80px; animation-delay: 0s; }
+.bubble:nth-child(2) { left: 40%; width: 40px; height: 40px; animation-delay: 2s; }
+.bubble:nth-child(3) { left: 70%; width: 100px; height: 100px; animation-delay: 4s; }
+.bubble:nth-child(4) { left: 90%; width: 60px; height: 60px; animation-delay: 1s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0; }
+    30% { opacity: 0.5; }
+    100% { transform: translateY(-110vh); opacity: 0; }
+}
+
+@keyframes typing { from { width: 0 } to { width: 100% } }
+@keyframes blink { 50% { border-color: transparent } }
+
+/* --- SOCIAL & BUTTON --- */
+.social-icons { display: flex; gap: 20px; margin: 30px 0; }
+.social-icons a { color: white; font-size: 1.5rem; transition: 0.3s; }
+.social-icons a:hover { color: #38bdf8; transform: translateY(-5px); }
+
+.btn-download {
+    padding: 12px 35px;
+    background: linear-gradient(to right, #38bdf8, #818cf8);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    display: inline-block;
+}
+/* --- UPDATED CONTACT FORM LAYOUT --- */
+.left-side {
+    display: flex;
+    align-items: center; /* Vertically centers the card */
+    justify-content: center; /* Horizontally centers the card in its half */
+    padding: 100px 50px 50px 50px; /* Top padding prevents overlap with the logo */
+    position: relative;
+    z-index: 5;
+}
+
+.contact-container {
+    width: 100%;
+    max-width: 380px;
+    padding: 35px;
+    background: #ffffff;
+    border-radius: 24px;
+    /* Added a stronger shadow to make the card "pop" from the white background */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+    position: relative;
+    margin-right: 100px; /* Pushes the card away from the profile circle line */
+}
+
+.contact-title {
+    font-size: 1.8rem;
+    color: #020617;
+    margin-bottom: 25px;
+    font-weight: 800;
+    text-align: left;
+}
+
+.input-box {
+    position: relative;
+    margin-bottom: 15px;
+}
+
+/* Positioning icons inside the boxes */
+.input-box i {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+}
+
+.input-box textarea ~ i {
+    top: 25px;
+}
+
+.input-box input, 
+.input-box textarea {
+    width: 100%;
+    padding: 12px 15px 12px 40px;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    background: #f8fafc;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+.send-btn {
+    width: 100%;
+    padding: 14px;
+    background: #020617;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.send-btn:hover {
+    background: #38bdf8;
+}
+
+/* Ensure Logo and Nav don't overlap the card */
+nav {
+    z-index: 100;
+}
+
+.logo {
+    color: #020617 !important;
+    font-weight: 700;
+}
+
+/* Responsive fix: If the screen is too small, stack them */
+@media (max-width: 1200px) {
+    .contact-container {
+        margin-right: 150px; /* Increased margin for mid-sized screens */
+        max-width: 320px;
+    }
+}
+/* --- AWARDS PAGE: INVERTED HOMOGENEOUS LOOK --- */
+
+.no-scroll-awards {
+    overflow: hidden;
+    height: 100vh;
+    background: #020617;
+}
+
+/* White Side Image Grid */
+.awards-images-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 100px 50px 40px 80px;
+}
+
+.award-image-frame {
+    flex: 1;
+    width: 100%;
+    max-height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.award-image-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Hover zoom effect */
+}
+
+.award-image-frame:hover img {
+    transform: scale(1.1); /* Slight zoom on hover */
+}
+
+/* Navigation Visibility on Split */
+.awards-nav {
+    background: transparent;
+    border: none;
+}
+
+.awards-nav .logo { color: #020617 !important; }
+.awards-nav .nav-links a { color: #e5e7eb; }
+
+/* Right Side Text Content */
+.awards-text-side {
+    padding-left: 80px !important;
+}
+
+.star-pill-static {
+    display: inline-block;
+    padding: 6px 15px;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    border: 1px solid #38bdf8;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+/* Typing Animation for Award Name */
+.award-typing {
+    font-size: 3.2rem;
+    color: #ffffff;
+    border-right: 3px solid #38bdf8;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(25) forwards, blink 0.7s infinite;
+}
+
+.college-sub {
+    color: #94a3b8;
+    font-size: 1.1rem;
+    margin: 10px 0 30px;
+}
+
+.speech-box-right {
+    border-left: 3px solid #38bdf8;
+    padding-left: 20px;
+    margin-bottom: 30px;
+    max-width: 500px;
+}
+
+.speech-box-right p {
+    font-style: italic;
+    color: #cbd5e1;
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.kural-box-right .tamil {
+    color: #38bdf8;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.kural-box-right .translation {
+    color: #64748b;
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+
+/* Responsive Fixes */
+@media (max-height: 850px) {
+    .award-typing { font-size: 2.5rem; }
+    .award-image-frame { max-height: 280px; }
+}
+
+@media (max-width: 900px) {
+    .no-scroll-awards { overflow-y: auto; height: auto; }
+    .hero-split { flex-direction: column; height: auto; }
+    .award-typing { white-space: normal; width: auto; border: none; animation: none; }
+}

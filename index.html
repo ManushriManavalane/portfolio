@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manushri Manavalane | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<nav>
+    <div class="logo">Manushri</div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="projects.html">Projects</a>
+        <a href="experience.html">Experience</a>
+        <a href="achievements.html">Achievements</a>
+        <a href="awards.html">Awards</a>
+    </div>
+</nav>
+
+<section class="hero-split">
+    <div class="left-side">
+    <div class="contact-container">
+        <h3 class="contact-title">Contact Me</h3>
+        <form id="contact-form" action="https://formspree.io/f/xaqbevpy" method="POST" class="contact-form">
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" name="name" placeholder="Full Name" required>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-envelope"></i>
+                <input type="email" name="_replyto" placeholder="Email Address" required>
+            </div>
+            <div class="input-box">
+                <i class="fa-solid fa-message"></i>
+                <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+            </div>
+            <button type="submit" id="submit-btn" class="send-btn">
+                <span>Send Message</span>
+                <i class="fa-solid fa-paper-plane"></i>
+            </button>
+            <div id="form-status" class="status-msg"></div>
+        </form>
+    </div>
+
+    <div class="profile-circle">
+        <img src="images/profile.jpg" alt="Manushri Manavalane">
+    </div>
+</div>
+
+    <div class="profile-circle">
+        <img src="images/profile.jpg" alt="Manushri Manavalane">
+    </div>
+</div>
+
+<script>
+    const form = document.getElementById('contact-form');
+    const status = document.getElementById('form-status');
+    const btn = document.getElementById('submit-btn');
+
+    form.addEventListener("submit", async function(event) {
+        event.preventDefault();
+        btn.disabled = true;
+        btn.innerHTML = "Sending...";
+        
+        const data = new FormData(event.target);
+        fetch(event.target.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+        }).then(response => {
+            if (response.ok) {
+                status.innerHTML = "Thanks! Message sent successfully.";
+                status.classList.add("success");
+                form.reset();
+            } else {
+                status.innerHTML = "Oops! There was a problem.";
+                status.classList.add("error");
+            }
+            btn.disabled = false;
+            btn.innerHTML = "Send Message <i class='fa-solid fa-paper-plane'></i>";
+        }).catch(error => {
+            status.innerHTML = "Oops! Error connecting to server.";
+            btn.disabled = false;
+        });
+    });
+</script>
+
+    <div class="profile-circle">
+        <img src="images/profile.jpg" alt="Manushri Manavalane">
+    </div>
+</div>
+
+    <div class="right-side">
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1>Hi, I'm <span>Manushri</span></h1>
+            <h2 class="typing-text">M.Tech CSE | AI & Data Science</h2>
+            <p>
+                Turning messy healthcare data into life-saving insights and business chaos into scalable strategy. I’m a Data Analyst by day and an AI Architect by night, specializing in models that care about your health as much as your ROI. Basically, I teach machines to understand medicine so humans can focus on the miracles.
+            </p>
+            
+            <div class="social-icons">
+                <a href="mailto:manushri.m21@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/manushri-manavalane" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                
+            </div>
+
+            <a href="Manushri_CV.pdf" download="Manushri_Manavalane_CV" target="_blank" class="btn-download">
+    Download CV
+</a>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>

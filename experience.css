@@ -1,0 +1,128 @@
+/* --- EXPERIENCE PAGE STYLING --- */
+
+.no-scroll-exp {
+    overflow: hidden;
+    height: 100vh;
+}
+
+/* LEFT SIDE: Co-Curricular */
+.exp-container-left {
+    padding: 120px 60px 40px 80px !important;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.section-heading {
+    font-size: 1.8rem;
+    color: #020617;
+    font-weight: 800;
+    margin-bottom: 30px;
+    border-bottom: 3px solid #38bdf8;
+    width: fit-content;
+    padding-bottom: 5px;
+}
+
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-card {
+    background: #f8fafc;
+    padding: 15px 20px;
+    border-radius: 12px;
+    border-left: 4px solid #38bdf8;
+    transition: 0.3s;
+}
+
+.activity-card:hover {
+    background: #ffffff;
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.date-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #64748b;
+    display: block;
+    margin-bottom: 4px;
+}
+
+.activity-card h4 {
+    font-size: 1rem;
+    color: #020617;
+}
+
+.activity-card p {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+/* RIGHT SIDE: Professional Experience */
+.exp-container-right {
+    padding-left: 60px !important;
+}
+
+.exp-typing {
+    font-size: 3rem;
+    color: #ffffff;
+    border-right: 3px solid #38bdf8;
+    width: fit-content;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: typing 3.5s steps(25) forwards, blink 0.7s infinite;
+}
+
+/* Internal scroll for long text while keeping page fixed */
+.scrollable-exp {
+    max-height: 80vh;
+    overflow-y: auto;
+    padding-right: 20px;
+}
+
+.scrollable-exp::-webkit-scrollbar { width: 0px; } /* Hide scrollbar for aesthetics */
+
+.work-timeline {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.work-item {
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    padding-bottom: 15px;
+}
+
+.work-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 5px;
+}
+
+.work-header strong {
+    color: #38bdf8;
+    font-size: 1rem;
+}
+
+.work-header span {
+    color: #64748b;
+    font-size: 0.75rem;
+}
+
+.work-item p {
+    color: #cbd5e1;
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-height: 800px) {
+    .exp-typing { font-size: 2.4rem; }
+    .work-timeline { gap: 15px; }
+    .section-heading { font-size: 1.5rem; }
+}
